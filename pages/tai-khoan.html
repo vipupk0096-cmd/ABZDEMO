@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý tài khoản - ABZ GROUP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/design-system.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/header-footer.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="page-banner">
+        <div class="container text-center">
+            <h1>Quản lý tài khoản</h1>
+            <p>Quản lý thông tin cá nhân và hoạt động của bạn</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="account-container">
+            <div class="account-sidebar">
+                <div class="user-info">
+                    <img src="https://via.placeholder.com/100x100?text=Avatar" alt="Avatar" class="avatar">
+                    <h3>Nguyễn Văn A</h3>
+                    <p>nguyenvana@example.com</p>
+                </div>
+                <nav class="account-nav">
+                    <a href="#profile" class="active">Thông tin cá nhân</a>
+                    <a href="#properties">Bất động sản của tôi</a>
+                    <a href="#favorites">Yêu thích</a>
+                    <a href="#settings">Cài đặt</a>
+                    <a href="#logout">Đăng xuất</a>
+                </nav>
+            </div>
+
+            <div class="account-content">
+                <div id="profile" class="tab-content active">
+                    <h2>Thông tin cá nhân</h2>
+                    <div id="user-role" class="user-role">
+                        <!-- Vai trò sẽ được cập nhật bởi JavaScript -->
+                    </div>
+                    <form id="profileForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Họ</label>
+                                <input type="text" id="firstName" name="firstName" value="Nguyễn">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Tên</label>
+                                <input type="text" id="lastName" name="lastName" value="Văn A">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" value="nguyenvana@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại</label>
+                            <input type="tel" id="phone" name="phone" value="0123 456 789">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Địa chỉ</label>
+                            <textarea id="address" name="address" rows="3">123 Đường ABC, Quận XYZ, TP.HCM</textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Cập nhật thông tin</button>
+                    </form>
+                </div>
+
+                <div id="properties" class="tab-content">
+                    <h2>Bất động sản của tôi</h2>
+                    <p id="myPropertiesEmpty" style="display: none; color: var(--color-text-light);">Bạn chưa có bài đăng nào.</p>
+                    <div class="user-properties" id="myPropertiesGrid"></div>
+                    <a href="dang-tin.html" class="btn btn-primary">Đăng tin mới</a>
+                </div>
+
+                <div id="favorites" class="tab-content">
+                    <h2>Bất động sản yêu thích</h2>
+                    <div class="favorites-list">
+                        <p>Bạn chưa có bất động sản yêu thích nào.</p>
+                    </div>
+                </div>
+
+                <div id="settings" class="tab-content">
+                    <h2>Cài đặt tài khoản</h2>
+                    <form id="settingsForm">
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="notifications" checked>
+                                Nhận thông báo qua email
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="newsletter" checked>
+                                Nhận bản tin hàng tuần
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Lưu cài đặt</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/auth-state.js"></script>
+    <script src="../js/dataManager.js"></script>
+    <script src="../js/account.js"></script>
+</body>
+</html>

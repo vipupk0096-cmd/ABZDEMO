@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BĐS Bán - Mua bán nhà đất, căn hộ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/design-system.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/header-footer.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        /* ===== LISTING PAGE SPECIFIC STYLES ===== */
+        .page-banner {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.85), rgba(231, 76, 60, 0.7)),
+                        url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80') center/cover;
+            padding: var(--spacing-12) var(--spacing-4);
+            text-align: center;
+            color: var(--color-white);
+        }
+
+        .page-banner h1 {
+            color: var(--color-white);
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .page-banner p {
+            font-size: var(--font-size-lg);
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+        }
+
+        .listing-wrapper {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: var(--spacing-6);
+            margin: var(--spacing-8) 0;
+        }
+
+        .filter-sidebar {
+            background-color: var(--color-white);
+            border: var(--border-width-1) solid var(--color-border-light);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-4);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .filter-sidebar h3 {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-4);
+            padding-bottom: var(--spacing-3);
+            border-bottom: var(--border-width-1) solid var(--color-border-light);
+        }
+
+        .filter-group {
+            margin-bottom: var(--spacing-6);
+        }
+
+        .filter-group label {
+            display: block;
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-2);
+            color: var(--color-dark);
+            font-size: var(--font-size-sm);
+        }
+
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+        }
+
+        .filter-group input[type="range"] {
+            width: 100%;
+            margin: var(--spacing-2) 0;
+        }
+
+        .range-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .reset-btn {
+            width: 100%;
+        }
+
+        .listings-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .listings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-6);
+            padding-bottom: var(--spacing-4);
+            border-bottom: var(--border-width-1) solid var(--color-border-light);
+        }
+
+        .listings-header h2 {
+            margin: 0;
+            font-size: var(--font-size-2xl);
+        }
+
+        .listings-controls {
+            display: flex;
+            gap: var(--spacing-3);
+            align-items: center;
+        }
+
+        .sort-select {
+            min-width: 200px;
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: var(--spacing-6);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-2);
+            margin-top: var(--spacing-6);
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="page-banner">
+        <div class="container">
+            <h1>Bất động sản bán</h1>
+            <p>Tìm kiếm nhà đất phù hợp với nhu cầu của bạn</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="listing-wrapper">
+            <!-- Sidebar Filters -->
+            <aside class="filter-sidebar">
+                <h3>Bộ lọc</h3>
+
+                <div class="filter-group">
+                    <label for="filterType">Loại BĐS</label>
+                    <select id="filterType" class="form-control">
+                        <option value="">Tất cả</option>
+                        <option value="nharieng">Nhà riêng</option>
+                        <option value="canho">Căn hộ</option>
+                        <option value="bietthu">Biệt thự</option>
+                        <option value="datnen">Đất nền</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterLocation">Khu vực</label>
+                    <select id="filterLocation" class="form-control">
+                        <option value="">Tất cả</option>
+                        <option value="sa pa">Sa Pa</option>
+                        <option value="lao cai">Lào Cai</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Giá</label>
+                    <div class="range-display">
+                        <span id="minPriceDisplay">0</span>
+                        <span id="maxPriceDisplay">Không giới hạn</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-3);">
+                        <input type="number" id="minPrice" class="form-control" min="0" max="10000000000000" value="0" step="10000000000000" placeholder="Giá từ">
+                        <input type="number" id="maxPrice" class="form-control" min="0" max="10000000000000" value="10000000000000" step="10000000000000" placeholder="Giá đến">
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label>Diện tích</label>
+                    <div class="range-display">
+                        <span id="minAreaDisplay">0 m²</span>
+                        <span id="maxAreaDisplay">1000 m²</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-3);">
+                        <input type="number" id="minArea" class="form-control" min="0" max="10000000" value="0" step="1" placeholder="Diện tích từ (m²)">
+                        <input type="number" id="maxArea" class="form-control" min="0" max="10000000" value="10000000" step="1" placeholder="Diện tích đến (m²)">
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterBedrooms">Phòng ngủ</label>
+                    <select id="filterBedrooms" class="form-control">
+                        <option value="">Tất cả</option>
+                        <option value="1">1 phòng</option>
+                        <option value="2">2 phòng</option>
+                        <option value="3">3 phòng</option>
+                        <option value="4">4+ phòng</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterBathrooms">Phòng tắm</label>
+                    <select id="filterBathrooms" class="form-control">
+                        <option value="">Tất cả</option>
+                        <option value="1">1 phòng</option>
+                        <option value="2">2 phòng</option>
+                        <option value="3">3+ phòng</option>
+                    </select>
+                </div>
+
+                <button id="resetFilters" class="btn btn-secondary btn-block reset-btn" type="button">Xóa bộ lọc</button>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="listings-content">
+                <div class="listings-header">
+                    <div>
+                        <h2>Danh sách bất động sản</h2>
+                        <p style="color: var(--color-text-light); margin: var(--spacing-2) 0 0 0; font-size: var(--font-size-sm);" id="resultCount"></p>
+                    </div>
+                    <div class="listings-controls">
+                        <select id="filterSort" class="form-control sort-select">
+                            <option value="newest">Mới nhất</option>
+                            <option value="priceLow">Giá: Thấp → Cao</option>
+                            <option value="priceHigh">Giá: Cao → Thấp</option>
+                            <option value="popular">Phổ biến</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="properties-grid" id="propertiesGrid"></div>
+
+                <div id="no-results" style="display: none; text-align: center; padding: var(--spacing-8) var(--spacing-4); color: var(--color-text-light);">
+                    <p style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-4);">Không tìm thấy bất động sản</p>
+                    <p>Hãy thử thay đổi bộ lọc hoặc sắp xếp lại.</p>
+                </div>
+
+                <div class="pagination" id="pagination" style="display: none;"></div>
+            </main>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/auth-state.js"></script>
+    <script src="../js/dataManager.js"></script>
+    <script src="../js/filters.js"></script>
+    <script src="../js/properties.js"></script>
+</body>
+</html>

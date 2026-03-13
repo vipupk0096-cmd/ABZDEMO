@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABZ GROUP - Trang Chủ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/header-footer.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        /* ===== HOMEPAGE SPECIFIC STYLES ===== */
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.85), rgba(231, 76, 60, 0.7)), 
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80') center/cover;
+            padding: var(--spacing-16) var(--spacing-4);
+            text-align: center;
+            color: var(--color-white);
+            margin-top: 0;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            color: var(--color-white);
+            font-size: clamp(2rem, 8vw, 4rem);
+            margin-bottom: var(--spacing-4);
+            font-weight: var(--font-weight-bold);
+            line-height: var(--line-height-tight);
+        }
+
+        .hero-subtitle {
+            font-size: var(--font-size-lg);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--spacing-8);
+            font-weight: var(--font-weight-normal);
+        }
+
+        /* Search Bar in Hero */
+        .hero-search {
+            display: flex;
+            gap: var(--spacing-2);
+            margin-bottom: var(--spacing-4);
+        }
+
+        .hero-search input {
+            flex: 1;
+            padding: var(--spacing-3) var(--spacing-4);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+            min-height: 48px;
+        }
+
+        .hero-search button {
+            padding: var(--spacing-3) var(--spacing-6);
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: var(--font-weight-semibold);
+            cursor: pointer;
+            transition: var(--transition-base);
+            white-space: nowrap;
+            min-height: 48px;
+        }
+
+        .hero-search button:hover {
+            background-color: var(--color-primary-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Quick Filters */
+        .quick-filters {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-3);
+            flex-wrap: wrap;
+        }
+
+        .filter-badge {
+            padding: var(--spacing-2) var(--spacing-4);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--color-white);
+            border: var(--border-width-1) solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .filter-badge:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Categories Section */
+        .categories-section {
+            background-color: var(--color-bg-lighter);
+            padding: var(--spacing-12) var(--spacing-4);
+        }
+
+        .categories-title {
+            text-align: center;
+            margin-bottom: var(--spacing-8);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-6);
+        }
+
+        .category-card {
+            background-color: var(--color-white);
+            padding: var(--spacing-6);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-base);
+            border: var(--border-width-1) solid var(--color-border-light);
+        }
+
+        .category-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary);
+            transform: translateY(-4px);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-3);
+            display: block;
+        }
+
+        .category-card h3 {
+            color: var(--color-dark);
+            margin-bottom: var(--spacing-2);
+            font-size: var(--font-size-xl);
+        }
+
+        .category-card p {
+            color: var(--color-text-light);
+            font-size: var(--font-size-sm);
+            margin-bottom: 0;
+        }
+
+        /* Featured Section */
+        .featured-section {
+            padding: var(--spacing-12) var(--spacing-4);
+        }
+
+        .featured-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-8);
+        }
+
+        .featured-header h2 {
+            margin: 0;
+        }
+
+        .view-all-link {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: var(--font-weight-medium);
+            transition: var(--transition-fast);
+        }
+
+        .view-all-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Properties Grid */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-6);
+            margin-bottom: var(--spacing-12);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.95), rgba(231, 76, 60, 0.85));
+            color: var(--color-white);
+            padding: var(--spacing-12) var(--spacing-4);
+            tex-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-8);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: var(--font-size-5xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .stat-label {
+            font-size: var(--font-size-base);
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--color-bg-lighter);
+            padding: var(--spacing-12) var(--spacing-4);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            margin-bottom: var(--spacing-4);
+        }
+
+        .cta-section p {
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-6);
+            font-size: var(--font-size-lg);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-3);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* No Results */
+        #no-results {
+            text-align: center;
+            padding: var(--spacing-8) var(--spacing-4);
+            color: var(--color-text-light);
+            font-size: var(--font-size-base);
+        }
+
+        /* Responsive */
+        @media (max-width: 767px) {
+            .hero {
+                padding: var(--spacing-8) var(--spacing-4);
+            }
+
+            .hero h1 {
+                font-size: var(--font-size-4xl);
+                margin-bottom: var(--spacing-3);
+            }
+
+            .hero-subtitle {
+                font-size: var(--font-size-base);
+                margin-bottom: var(--spacing-6);
+            }
+
+            .hero-search {
+                flex-direction: column;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .properties-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-header {
+                flex-direction: column;
+                align-items: start;
+                gap: var(--spacing-3);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-6);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Tìm Ngôi Nhà Mơ Ước Của Bạn</h1>
+                <p class="hero-subtitle">Khám phá hàng nghìn căn hộ, nhà đất bán và cho thuê tại Sapa</p>
+                
+                <div class="hero-search">
+                    <input type="text" id="searchInput" placeholder="Nhập địa điểm, dự án...">
+                    <button type="button" onclick="document.getElementById('searchInput').focus()">🔍 Tìm kiếm</button>
+                </div>
+
+                <div class="quick-filters">
+                    <span class="filter-badge" onclick="window.location.href='pages/nha-ban.html'">🏠 Mua bán</span>
+                    <span class="filter-badge" onclick="window.location.href='pages/nha-cho-thue.html'">🔑 Cho thuê</span>
+                    <span class="filter-badge" onclick="window.location.href='pages/noi-bat.html'">⭐ Nổi bật</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="categories-title">
+                <h2>Tìm Kiếm Theo Danh Mục</h2>
+                <p style="color: var(--color-text-light); margin-top: var(--spacing-2);">Chọn loại bất động sản phù hợp với nhu cầu của bạn</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card" onclick="window.location.href='pages/nha-ban.html'">
+                    <span class="category-icon">🏘️</span>
+                    <h3>Nhà Riêng</h3>
+                    <p>Các căn nhà riêng lẻ</p>
+                </div>
+                <div class="category-card" onclick="window.location.href='pages/nha-ban.html'">
+                    <span class="category-icon">🏢</span>
+                    <h3>Căn Hộ</h3>
+                    <p>Căn hộ chung cư hiện đại</p>
+                </div>
+                <div class="category-card" onclick="window.location.href='pages/nha-ban.html'">
+                    <span class="category-icon">🏭</span>
+                    <h3>Đất Nền</h3>
+                    <p>Lô đất để xây dựng</p>
+                </div>
+                <div class="category-card" onclick="window.location.href='pages/nha-cho-thue.html'">
+                    <span class="category-icon">🔑</span>
+                    <h3>Cho Thuê</h3>
+                    <p>BĐS cho thuê dài hạn</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties Section -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="featured-header">
+                <div>
+                    <h2 style="margin: 0;">Bất Động Sản Nổi Bật</h2>
+                    <p style="color: var(--color-text-light); margin: var(--spacing-2) 0 0 0; font-size: var(--font-size-sm);">Những dự án được đánh giá cao nhất</p>
+                </div>
+                <a href="pages/noi-bat.html" class="view-all-link">Xem tất cả →</a>
+            </div>
+            
+            <div class="properties-grid" id="featuredProperties">
+                <!-- Bất động sản nổi bật sẽ được load từ dataManager -->
+            </div>
+            
+            <div id="no-results" style="display: none;">
+                Không tìm thấy bất động sản nào phù hợp với từ khóa của bạn.
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" id="statsProperties">1000+</div>
+                    <div class="stat-label">Bất động sản</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="statsUsers">500+</div>
+                    <div class="stat-label">Thành viên</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="statsDeals">200+</div>
+                    <div class="stat-label">Giao dịch</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Năm kinh nghiệm</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Bạn Có Bất Động Sản Cần Bán?</h2>
+                <p>Đăng tin bất động sản của bạn ngay hôm nay và tiếp cận với hàng ngàn khách hàng tiềm năng</p>
+                <div class="cta-buttons">
+                    <a href="pages/dang-tin.html" class="btn btn-primary btn-lg">+ Đăng tin ngay</a>
+                    <a href="pages/dang-nhap.html" class="btn btn-ghost btn-lg auth-hidden">Đăng nhập</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth-state.js"></script>
+    <script src="js/dataManager.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/featured.js"></script>
+</body>
+</html>

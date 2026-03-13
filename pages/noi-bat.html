@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bất Động Sản Nổi Bật - ABZ GROUP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/design-system.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/header-footer.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="page-banner">
+        <div class="container text-center">
+            <h1>Bất Động Sản Nổi Bật</h1>
+            <p>Khám phá những bất động sản được yêu thích nhất</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="filter-section">
+            <form class="filter-grid">
+                <select class="filter-input">
+                    <option value="">Khu vực (Tỉnh/Thành)</option>
+                    <option value="hn">Hà Nội</option>
+                    <option value="hcm">TP. Hồ Chí Minh</option>
+                    <option value="dn">Đà Nẵng</option>
+                    <option value="hp">Hải Phòng</option>
+                    <option value="ct">Cần Thơ</option>
+                </select>
+                <select class="filter-input">
+                    <option value="">Loại BĐS</option>
+                    <option value="canho">Căn hộ chung cư</option>
+                    <option value="nharieng">Nhà riêng</option>
+                    <option value="bietthu">Biệt thự</option>
+                    <option value="datnen">Đất nền</option>
+                    <option value="shophouse">Shophouse</option>
+                </select>
+                <select class="filter-input">
+                    <option value="">Mức giá</option>
+                    <option value="1">Dưới 2 tỷ</option>
+                    <option value="2">2 - 5 tỷ</option>
+                    <option value="3">5 - 10 tỷ</option>
+                    <option value="4">10 - 20 tỷ</option>
+                    <option value="5">Trên 20 tỷ</option>
+                </select>
+                <button type="button" class="btn btn-primary">TÌM KIẾM</button>
+            </form>
+        </div>
+
+        <div class="featured-stats">
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Bất động sản nổi bật</p>
+            </div>
+            <div class="stat-item">
+                <h3>50+</h3>
+                <p>Dự án hot</p>
+            </div>
+            <div class="stat-item">
+                <h3>1000+</h3>
+                <p>Lượt xem/tháng</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Bất Động Sản Nổi Bật</h2>
+
+        <div class="grid-properties" id="featuredProperties">
+            <!-- Bất động sản nổi bật sẽ được load từ dataManager -->
+        </div>
+
+        <div id="no-results" style="display: none; text-align: center; margin-top: 20px; color: #666;">
+            Không tìm thấy bất động sản nào phù hợp với bộ lọc của bạn.
+        </div>
+
+        <div class="load-more" id="loadMoreSection">
+            <button class="btn btn-outline btn-lg">Xem thêm bất động sản nổi bật</button>
+        </div>
+
+        <div class="featured-projects">
+            <h2 class="section-title">Dự Án Nổi Bật</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1f?w=400&q=80" alt="Vinhomes Grand Park">
+                    <div class="project-info">
+                        <h3>Vinhomes Grand Park</h3>
+                        <p>📍 Quận 9, TP.HCM</p>
+                        <p>36,000 căn hộ • 271ha</p>
+                        <a href="#" class="btn btn-sm btn-primary">Xem dự án</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?w=400&q=80" alt="Masteri Thảo Điền">
+                    <div class="project-info">
+                        <h3>Masteri Thảo Điền</h3>
+                        <p>📍 Quận 2, TP.HCM</p>
+                        <p>1,200 căn hộ • 8.6ha</p>
+                        <a href="#" class="btn btn-sm btn-primary">Xem dự án</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400&q=80" alt="The Empire City">
+                    <div class="project-info">
+                        <h3>The Empire City</h3>
+                        <p>📍 Hà Nội</p>
+                        <p>2,000 căn hộ • 22ha</p>
+                        <a href="#" class="btn btn-sm btn-primary">Xem dự án</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/auth-state.js"></script>
+    <script src="../js/dataManager.js"></script>
+    <script src="../js/featured.js"></script>
+</body>
+</html>

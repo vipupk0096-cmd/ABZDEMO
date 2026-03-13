@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bản Đồ BĐS Sapa - ABZ GROUP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/design-system.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/header-footer.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        /* CSS báo hiệu đang chọn địa điểm nào */
+        .map-location-item.active {
+            background-color: #f0f2f5;
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="page-banner" style="background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('https://images.unsplash.com/photo-1542017351-4608c0bb47b5?w=1200&q=80') center/cover;">
+        <div class="container text-center">
+            <h1>Bản Đồ Bất Động Sản Sapa</h1>
+            <p>Tra cứu vị trí, quy hoạch và các dự án tiềm năng tại Sapa</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="map-layout">
+            <div class="map-sidebar">
+                <h3 style="margin-bottom: 15px; color: var(--dark); border-bottom: 2px solid var(--primary); padding-bottom: 10px;">Danh sách vị trí</h3>
+                
+                <div class="map-location-item" data-lat="22.3353" data-lng="103.8450">
+                    <h4>📍 Đất nền trung tâm Thị xã</h4>
+                    <p>Mặt tiền đường Fansipan, Sapa</p>
+                </div>
+                <div class="map-location-item" data-lat="22.3167" data-lng="103.8583">
+                    <h4>📍 Khách sạn View Thung Lũng</h4>
+                    <p>Đường Mường Hoa, Bản Ý Linh Hồ</p>
+                </div>
+                <div class="map-location-item" data-lat="22.2905" data-lng="103.8885">
+                    <h4>📍 Homestay Tả Van</h4>
+                    <p>Bản Tả Van, Sapa, Lào Cai</p>
+                </div>
+                <div class="map-location-item" data-lat="22.3833" data-lng="103.8333">
+                    <h4>📍 Khu nghỉ dưỡng Tả Phìn</h4>
+                    <p>Bản Tả Phìn, Sapa (Gần tu viện cổ)</p>
+                </div>
+                <div class="map-location-item" data-lat="22.3556" data-lng="103.7744">
+                    <h4>📍 Biệt thự Đèo Ô Quy Hồ</h4>
+                    <p>Khu vực Cổng Trời, Sapa</p>
+                </div>
+                <div class="map-location-item">
+                    <p style="font-size: 0.85rem; color: #7f8c8d; font-style: italic; margin-top: 10px;">* Click vào vị trí để di chuyển bản đồ.</p>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <iframe 
+                    id="mapFrame"
+                    src="https://maps.google.com/maps?q=Sapa,LaoCai&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // JS xử lý click để load tọa độ
+        document.addEventListener('DOMContentLoaded', () => {
+            const mapFrame = document.getElementById('mapFrame');
+            const locations = document.querySelectorAll('.map-location-item');
+
+            locations.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Xóa class active của các item khác, thêm vào item vừa click
+                    locations.forEach(loc => loc.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Lấy tọa độ từ data-attribute
+                    const lat = this.getAttribute('data-lat');
+                    const lng = this.getAttribute('data-lng');
+
+                    // Cập nhật link iframe (z=16 là mức độ zoom sát vào địa điểm)
+                    if (lat && lng) {
+                        const newUrl = `https://maps.google.com/maps?q=${lat},${lng}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
+                        mapFrame.src = newUrl;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

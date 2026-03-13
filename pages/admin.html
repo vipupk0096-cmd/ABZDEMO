@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản trị viên - ABZ GROUP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/design-system.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/header-footer.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="page-banner">
+        <div class="container text-center">
+            <h1>Quản trị viên</h1>
+            <p>Quản lý hệ thống và nội dung</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="admin-container">
+            <div class="admin-sidebar">
+                <h3>Menu quản trị</h3>
+                <nav class="admin-nav">
+                    <a href="#dashboard" class="active">Tổng quan</a>
+                    <a href="#users">Quản lý người dùng</a>
+                    <a href="#properties">Quản lý bất động sản</a>
+                    <a href="#reports">Báo cáo</a>
+                    <a href="#settings">Cài đặt hệ thống</a>
+                </nav>
+            </div>
+
+            <div class="admin-content">
+                <div id="dashboard" class="admin-tab active">
+                    <h2>Tổng quan hệ thống</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3 id="adminStatUsers">-</h3>
+                            <p>Tổng người dùng</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="adminStatProperties">-</h3>
+                            <p>Bất động sản</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="adminStatNewThisMonth">-</h3>
+                            <p>Tin đăng mới (tháng)</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="adminStatViews">-</h3>
+                            <p>Lượt truy cập</p>
+                        </div>
+                    </div>
+
+                    <div class="recent-activity">
+                        <h3>Hoạt động gần đây</h3>
+                        <ul id="adminRecentActivity"></ul>
+                    </div>
+                </div>
+
+                <div id="users" class="admin-tab">
+                    <h2>Quản lý người dùng</h2>
+                    <div class="admin-actions">
+                        <button class="btn btn-primary" id="adminAddUserBtn" type="button">Thêm người dùng mới</button>
+                        <input type="text" placeholder="Tìm kiếm người dùng..." class="search-input">
+                        <select class="filter-select" id="adminUserRoleFilter">
+                            <option value="">Tất cả vai trò</option>
+                            <option value="admin">Admin</option>
+                            <option value="user">Người dùng</option>
+                        </select>
+                        <select class="filter-select" id="adminUserStatusFilter">
+                            <option value="">Tất cả trạng thái</option>
+                            <option value="active">Hoạt động</option>
+                            <option value="inactive">Đã khóa</option>
+                        </select>
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên</th>
+                                <th>Email</th>
+                                <th>Vai trò</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminUsersTbody"></tbody>
+                    </table>
+                </div>
+
+                <div id="properties" class="admin-tab">
+                    <h2>Quản lý bất động sản</h2>
+                    <div class="admin-actions">
+                        <input type="text" placeholder="Tìm kiếm bất động sản..." class="search-input" id="adminPropertySearch">
+                        <select class="filter-select" id="adminPropertyStatusFilter">
+                            <option value="">Tất cả trạng thái</option>
+                            <option value="pending">Chờ duyệt</option>
+                            <option value="approved">Đã duyệt</option>
+                            <option value="rejected">Từ chối</option>
+                        </select>
+                        <select class="filter-select" id="adminPropertyListingTypeFilter">
+                            <option value="">Tất cả loại tin</option>
+                            <option value="ban">Bán</option>
+                            <option value="thue">Cho thuê</option>
+                        </select>
+                        <select class="filter-select" id="adminPropertyFeaturedFilter">
+                            <option value="">Tất cả nổi bật</option>
+                            <option value="featured">Chỉ nổi bật</option>
+                            <option value="not_featured">Không nổi bật</option>
+                        </select>
+                        <select class="filter-select" id="adminPropertyVerifiedFilter">
+                            <option value="">Tất cả xác thực</option>
+                            <option value="verified">Đã xác thực</option>
+                            <option value="not_verified">Chưa xác thực</option>
+                        </select>
+                        <select class="filter-select" id="adminPropertySort">
+                            <option value="newest">Mới nhất</option>
+                            <option value="oldest">Cũ nhất</option>
+                            <option value="price_desc">Giá giảm dần</option>
+                            <option value="price_asc">Giá tăng dần</option>
+                            <option value="views_desc">Lượt xem giảm dần</option>
+                        </select>
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tiêu đề</th>
+                                <th>Người đăng</th>
+                                <th>Giá</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminPropertiesTbody"></tbody>
+                    </table>
+                </div>
+
+                <div id="reports" class="admin-tab">
+                    <h2>Báo cáo và thống kê</h2>
+                    <div class="report-section">
+                        <h3>Thống kê theo tháng</h3>
+                        <canvas id="monthlyChart" width="400" height="200"></canvas>
+                    </div>
+                    <div class="report-section">
+                        <h3>Báo cáo vi phạm</h3>
+                        <p>Danh sách báo cáo vi phạm đang ở chế độ demo.</p>
+                        <button class="btn btn-primary" type="button">Xem chi tiết</button>
+                    </div>
+                </div>
+
+                <div id="settings" class="admin-tab">
+                    <h2>Cài đặt hệ thống</h2>
+                    <form id="systemSettings">
+                        <div class="form-group">
+                            <label for="siteTitle">Tiêu đề trang web</label>
+                            <input type="text" id="siteTitle" name="siteTitle" value="ABZ GROUP">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactEmail">Email liên hệ</label>
+                            <input type="email" id="contactEmail" name="contactEmail" value="contact@abzgroup.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="maintenance" id="maintenance">
+                                Chế độ bảo trì
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Lưu cài đặt</button>
+                    </form>
+
+                    <div class="admin-actions" style="margin-top: 20px;">
+                        <button type="button" class="btn btn-outline" id="adminExportBtn">Xuất dữ liệu</button>
+                        <input type="file" id="adminImportFile" accept="application/json" style="display: none;">
+                        <button type="button" class="btn btn-outline" id="adminImportBtn">Nhập dữ liệu</button>
+                        <button type="button" class="btn btn-primary" id="adminSeedDemoBtn">Thêm dữ liệu mẫu</button>
+                        <button type="button" class="btn btn-danger" id="adminClearDataBtn">Xóa dữ liệu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/auth-state.js"></script>
+    <script src="../js/dataManager.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>
+

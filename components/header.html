@@ -1,0 +1,89 @@
+<header class="header">
+    <div class="container">
+        <div class="header-wrapper">
+            <!-- Logo -->
+            <a href="../index.html" class="header-logo">
+                <span class="logo-text">ABZ<span class="logo-accent">GROUP</span></span>
+            </a>
+
+            <!-- Navigation Menu -->
+            <nav class="header-nav" id="nav-menu">
+                <a href="../index.html" class="nav-link">Trang chủ</a>
+                <a href="../pages/noi-bat.html" class="nav-link">Nổi bật</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link nav-dropdown-toggle" type="button">Mua/Thuê</button>
+                    <div class="nav-dropdown-menu">
+                        <a href="../pages/nha-ban.html" class="dropdown-item">Nhà đất cần bán</a>
+                        <a href="../pages/nha-cho-thue.html" class="dropdown-item">Nhà đất cho thuê</a>
+                    </div>
+                </div>
+                <a href="../pages/map.html" class="nav-link">Bản đồ SAPA</a>
+            </nav>
+
+            <!-- Right Section: Search + Auth -->
+            <div class="header-right">
+                <div class="header-search-wrapper hide-mobile">
+                    <input type="text" class="header-search" id="headerSearch" placeholder="Tìm kiếm...">
+                    <button class="header-search-btn" type="button" aria-label="Tìm kiếm">
+                        <span>🔍</span>
+                    </button>
+                </div>
+
+                <div class="header-actions">
+                    <!-- Auth State: Not Logged In -->
+                    <div class="auth-group auth-hidden">
+                        <a href="../pages/dang-nhap.html" class="btn btn-ghost btn-sm">Đăng nhập</a>
+                        <a href="../pages/dang-ky.html" class="btn btn-primary btn-sm">Đăng ký</a>
+                    </div>
+
+                    <!-- Auth State: Logged In -->
+                    <div class="auth-group auth-required" style="display: flex; align-items: center; gap: var(--spacing-3);">
+                        <a href="../pages/dang-tin.html" class="btn btn-primary btn-sm">+ Đăng tin</a>
+
+                        <div class="header-user-menu">
+                            <button class="header-user-btn" id="userMenuBtn" type="button">
+                                <span class="user-icon">👤</span>
+                                <span id="headerUsername">Tài khoản</span>
+                            </button>
+                            <div class="user-dropdown" id="userDropdown">
+                                <a href="../pages/tai-khoan.html" class="dropdown-item">Tài khoản của tôi</a>
+                                <a href="../pages/admin.html" class="dropdown-item admin-only" id="admin-link" style="display: none;">Admin Bảng điều khiển</a>
+                                <hr style="margin: var(--spacing-2) 0; border: none; border-top: 1px solid var(--color-border-light);">
+                                <button class="dropdown-item text-danger" id="logout-link" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer;" type="button">Đăng xuất</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Hamburger Menu -->
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu" type="button">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Search Bar (shown on mobile) -->
+        <div class="header-search-mobile">
+            <input type="text" class="form-control" id="mobileSearch" placeholder="Tìm kiếm bất động sản...">
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-nav">
+            <a href="../index.html" class="mobile-nav-item">Trang chủ</a>
+            <a href="../pages/noi-bat.html" class="mobile-nav-item">Nổi bật</a>
+            <a href="../pages/nha-ban.html" class="mobile-nav-item">Nhà đất bán</a>
+            <a href="../pages/nha-cho-thue.html" class="mobile-nav-item">Nhà đất cho thuê</a>
+            <a href="../pages/map.html" class="mobile-nav-item">Bản đồ</a>
+        </nav>
+        <div class="mobile-auth">
+            <a href="../pages/dang-nhap.html" class="btn btn-ghost btn-sm auth-hidden" style="width: 100%; text-align: center;">Đăng nhập</a>
+            <a href="../pages/dang-ky.html" class="btn btn-primary btn-sm auth-hidden" style="width: 100%; text-align: center;">Đăng ký</a>
+            <a href="../pages/dang-tin.html" class="btn btn-primary btn-sm auth-required" style="width: 100%; text-align: center; display: none;">+ Đăng tin</a>
+        </div>
+    </div>
+</header>
+
